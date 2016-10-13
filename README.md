@@ -21,6 +21,7 @@
 	*	功能：加密，壓縮，轉換編碼;
 	*	因爲不是很重要（理由同上一層），所以就直接不做
 7. 	application Layer
+
 # Five Layer
 
 +	Network Access Layer
