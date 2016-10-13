@@ -25,11 +25,16 @@
 # Five Layer
 
 +	Network Access Layer
-	因爲有不同的標準（第二層一下），但因爲第三層有相同的協定（IP）所以可以溝通
+	*	因爲有不同的標準（第二層一下），但因爲第三層有相同的協定（IP）所以可以溝通
 +	Internet Layer
 	*	可以做routing的就是router
 	*	router不需要到第四層以上
 +	Transport Layer
-	reliable end to end transfer
+	*	reliable end to end transfer
 
+
+# 作業
+
++	ack 
+	*	1端送data給2端，2端如果收到了回傳一個東西給1端，讓1端知道2端已經收到了
 
