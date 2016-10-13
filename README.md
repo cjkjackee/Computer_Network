@@ -1,4 +1,6 @@
 # Computer_Network
+
+# OSI
 Network layer
 	功用：routing，flow control
 	就算是頻寬無限大還是需要進行flow control 防止不正當的使用者
