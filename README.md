@@ -17,4 +17,15 @@ Session Layer（實用中沒有用到）
 Presentation Layer (實用中沒有用到)
 	功能：加密，壓縮，轉換編碼;
 	因爲不是很重要（理由同上一層），所以就直接不做
-	
+
+# Five Layer
+
++Network Access Layer
+	因爲有不同的標準（第二層一下），但因爲第三層有相同的協定（IP）所以可以溝通
++Internet Layer
+	*可以做routing的就是router
+	*router不需要到第四層以上
++Transport Layer
+	reliable end to end transfer
+
+
