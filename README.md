@@ -20,12 +20,12 @@ Presentation Layer (實用中沒有用到)
 
 # Five Layer
 
-+Network Access Layer
++	Network Access Layer
 	因爲有不同的標準（第二層一下），但因爲第三層有相同的協定（IP）所以可以溝通
-+Internet Layer
-	*可以做routing的就是router
-	*router不需要到第四層以上
-+Transport Layer
++	Internet Layer
+	*	可以做routing的就是router
+	*	router不需要到第四層以上
++	Transport Layer
 	reliable end to end transfer
 
 
