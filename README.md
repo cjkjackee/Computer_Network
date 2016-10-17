@@ -32,7 +32,24 @@
 +	Transport Layer
 	*	reliable end to end transfer
 
+# 信號
++	analog-類比信號
+	*	信號是連續的
++	digital-數位信號
+	*	信號是離散的
 
+analog的傳輸方式
++	ASK
+	*	傳輸距離太遠，信號會減弱。
++	FSK
++	PSK
+
+# Multiplexing
++	frequency-division multiplexing (FDM)
+	*	不同頻率來區分
++	time-division multiplexing (TDM)
++	code-division multiplexing (CDM)
+	
 # 作業
 
 +	ack 
