@@ -82,7 +82,8 @@ analog的傳輸方式
 		美國制定的任何人在美國都可以用的頻段  
 		915MHz  
 		2.4MHz  
-		5.8MHz  
+		5.8MHz
+
 # LAN
 -	organization of IEEE 802
 	*	802.1
