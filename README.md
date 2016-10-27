@@ -88,6 +88,23 @@ analog的傳輸方式
 -	organization of IEEE 802
 	*	802.1
 	*	802.2 LLC
+	*	不同的physical和mac layer 有不同的號碼（802.X）但LLC只有802.2,之後會講爲什麼
+-	Ingredient of a LAN
+	*	Topology ： 連接網絡的方法
+	*	Transmission medium
+	*	Medium Access Control (MAC) ： 不同的transmission medium 有不同的mac
+
+LAN topology
+-	bus: 
+	*	share medium
+	*	一個人在傳所有人都知道
+	*	問題：會有collision,所以需要有MAC
+-	tree
+	*	邏輯上與bus相似
+-	Ring
+-	star
+	*	邏輯上與bus相似
+以上是最常用的4種
 
 # 作業
 
