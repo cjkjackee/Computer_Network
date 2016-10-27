@@ -73,16 +73,16 @@ analog的傳輸方式
 	
 +	unguided media
 	*	infrared(IR) - 紅外線:  
-		> 會被亮色的物體反射  
-		在室外會被陽光幹擾，所以需要加大功率，但是加大功率卻會傷害
-		眼睛
-	*	Microwave radio :
-		長距離
-		ISM（industrial，scientific，and medical） bands
-		美國制定的任何人在美國都可以用的頻段
-		915MHz
-		2.4MHz
-		5.8MHz
+		會被亮色的物體反射  
+		在室外會被陽光幹擾，所以需要加大功率，但是加大功率卻會傷害眼
+		睛
+	*	Microwave radio :  
+		長距離  
+		ISM（industrial，scientific，and medical） bands  
+		美國制定的任何人在美國都可以用的頻段  
+		915MHz  
+		2.4MHz  
+		5.8MHz  
 
 # 作業
 
