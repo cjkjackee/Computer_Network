@@ -48,8 +48,37 @@ analog的傳輸方式
 +	frequency-division multiplexing (FDM)
 	*	不同頻率來區分
 +	time-division multiplexing (TDM)
+	*	將時間分成不同的time slot， 不同的time slot傳不同的東西
 +	code-division multiplexing (CDM)
+	*	以特殊的編碼方式來區分（同time同frequency）
+	*	其他的編碼方式，對只會這一種編碼方式的來講只是一個background
+		noise
+	*	只要background noise 不太大，掩蓋原本的，基本上不會有影響
+
+#Spread Spectrum
++	讓攔截通訊（interception）和破壞通訊（jamming）變得困難
++	Frequency-Hopping
+	*	不同的時間點收不同的frequency
+	*	有同樣的hopping pattern 就收得到資料
+	*	有兩個資料，只要有不同的hopping pattern就不互相影響
+	*	IEEE 802.11 300ms 跳一次
++	Direct Sequence
+	*	把資料跟另外一串以知的bit 做exclusive or 再送出
+
+#transmission media
++	guided media
+	*	twisted pair - 雙絞線
+	*	coaxial cable - 銅軸電纜
+	*	optical fiber - 光纖
 	
++	unguided media
+	*	infrared(IR) - 紅外線:<br/>
+		>會被亮色的物體反射
+		>在室外會被陽光幹擾，所以需要加大功率，但是加大功率卻會傷害
+		眼睛
+	*	Microwave radio :
+		
+
 # 作業
 
 +	ack 
