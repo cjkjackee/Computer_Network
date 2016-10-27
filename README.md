@@ -88,24 +88,48 @@ analog的傳輸方式
 -	organization of IEEE 802
 	*	802.1
 	*	802.2 LLC
-	*	不同的physical和mac layer 有不同的號碼（802.X）但LLC只有802.2,之後會講爲什麼
+	*	不同的physical和mac layer 有不同的號碼（802.X）但LLC只有802.
+		2,之後會講爲什麼
 -	Ingredient of a LAN
 	*	Topology ： 連接網絡的方法
 	*	Transmission medium
-	*	Medium Access Control (MAC) ： 不同的transmission medium 有不同的mac
+	*	Medium Access Control (MAC) ： 不同的transmission medium 有
+		不同的mac
 
 LAN topology
 -	bus: 
 	*	share medium
 	*	一個人在傳所有人都知道
 	*	問題：會有collision,所以需要有MAC
+	+	在末端放上terminator，資料到了末端就會被消除，不需要考慮如何
+		消除資料
 -	tree
 	*	邏輯上與bus相似
+	+	signal要多強？  
+		把功率加強  
+		在網絡上加上repeater ：重復發送信號，所以repeater通常是雙向
 -	Ring
+	+	有兩種標準：802.3（contention） 和802.5（token）
+	+	802.3 還有很多人在用，802.5 現在很少人在用了。因爲如果token
+		不見了，網絡就crash了
 -	star
 	*	邏輯上與bus相似
+	+	hub 和 repeater 的差異：repeater只有雙向，hub有multiport
+	+	header hub （HHUB）
 
 以上是最常用的4種
+
+MAC
+-	polling
+	*	類似開會，主席問誰要發言，如果有多人，只選其中一個
+-	round robin
+	*	輪流
+-	reservation
+	*	預約制
+-	contention
+	+	想傳就傳
+	+	當傳輸量少的時候，碰撞的幾率小，如brusty network，這個方法的
+		效率就很好。
 
 # 作業
 
@@ -115,3 +139,4 @@ LAN topology
 # 注
 -	IETF： 制定標準的機構，網絡架構，TCP
 -	IEEE： 制定標準的機構，最多人用他們制定的LAN的標準（只要是802的幾乎都是LAN的標準）
+-	第二層的封包叫frame， 第3層叫packet，第四層叫segment，所有統稱PDU
