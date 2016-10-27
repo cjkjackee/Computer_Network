@@ -103,7 +103,7 @@ LAN topology
 	*	邏輯上與bus相似
 -	Ring
 -	star
-	*	邏輯上與bus相似
+	*	邏輯上與bus相似  
 以上是最常用的4種
 
 # 作業
