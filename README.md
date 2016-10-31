@@ -149,7 +149,6 @@ LAN hub and switch
 		處：錯誤率較高
 
 
-
 # 作業
 
 +	ack 
