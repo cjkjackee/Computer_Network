@@ -115,6 +115,7 @@ LAN topology
 -	star
 	*	邏輯上與bus相似
 	+	hub 和 repeater 的差異：repeater只有雙向，hub有multiport
+	+	hub第一層，router第三層
 	+	header hub （HHUB）
 
 以上是最常用的4種
@@ -131,6 +132,24 @@ MAC
 	+	當傳輸量少的時候，碰撞的幾率小，如brusty network，這個方法的
 		效率就很好。
 
+LAN hub and switch
+-	hub
+	+	一個時間點只能有一個station傳
+	+	雖然跟shared medium bus 相似，但是還是有好處：當一個點出問題
+		可以直接disable它
+-	Lan switch
+	+	lan switch跑到第二層，看到mac address 知道要傳到那個電腦
+	+	devices不用做出什麼改變throughput就可以增加
+	+	scales： 可覆蓋範圍，例：有一種方法2臺電腦效能很好，數量一多
+		效能就不好，就是scale不高
+	+	有storge and forward 和 cut through 兩種
+	+	storge and forward： 資料進來存下來了，在傳出去，好處：錯誤
+		率低，壞處：慢
+	+	cut though： 資料header一進來就知道要往那裏送，好處：快，壞
+		處：錯誤率較高
+
+
+
 # 作業
 
 +	ack 
@@ -140,3 +159,5 @@ MAC
 -	IETF： 制定標準的機構，網絡架構，TCP
 -	IEEE： 制定標準的機構，最多人用他們制定的LAN的標準（只要是802的幾乎都是LAN的標準）
 -	第二層的封包叫frame， 第3層叫packet，第四層叫segment，所有統稱PDU
+-	throughput：傳多少進去，傳多少出來
+-	KISS：keep it simple and stupid
