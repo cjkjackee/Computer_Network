@@ -148,7 +148,61 @@ LAN hub and switch
 		率低，壞處：慢
 	+	cut though： 資料header一進來就知道要往那裏送，好處：快，壞
 		處：錯誤率較高
+-	adaptive switch
+	+	開始是用cut through的方式傳
+	+	計算 error rate
+	+	如果error rate 太高，換成用storge and forward 的方式傳
 
+Protocol Reference model
+-	LLC:problide one or more service access points (SAPs)
+
+LLC
+-	802.2的LLC不會做error detection
+-	LLC會以爲雙方是互相對聯的，實際上是下面一層MAC解決了鏈接的問題
+
+two level of addressing
+-	MAC address：表示硬體的位置，（理論上）不會重復, trailer:做error detection
+-	LLC address：
+
+Generic MAC Frame
+-	MAC control —— header
+-	Destination MAC address —— header
+-	Source MAC address —— header
+-	LLC PDU —— payload
+-	CRC —— trailer
+
+bridge 
+-	跑到第二層
+-	不會改變資料
+-	與router的不同點
+	+	bridge在第二層，router在第三層
+	+	routing方法不同
+-	與lan switch差異
+	+	都跑到第二層
+	+	bridge 都是storge and forward，lan switch 有兩種
+	+	lan switch有特別的設計，通常會快很多
+
+networking device
+-	第一層：repeater，hub
+-	第二層：bridge，lan switch
+-	第三層：router
+-	第四層：gateway
+	+	gateway：相連兩種不同的網絡
+
+# ethernet LAN
+802.3
+-	define 
+	+	physical layer
+	+	MAC layer：CSMA/CD —— contention的方式
+
+precursors of CSMA/CD
+-	pure ALOHA
+	+	方式：A傳給B，等待B回傳A讓A知道收到，如果有一段時間沒回復，A
+		就重傳
+	+	不一定同時傳輸才會碰撞，只有重疊到就會碰撞
+-	Slotted ALOHA
+	+	同時pure ALOHA 的方式，但增加TDM，每個time slot開始的時候才
+		能傳，所以碰撞的時候只有兩個同時傳的時候。
 
 # 作業
 
@@ -161,3 +215,4 @@ LAN hub and switch
 -	第二層的封包叫frame， 第3層叫packet，第四層叫segment，所有統稱PDU
 -	throughput：傳多少進去，傳多少出來
 -	KISS：keep it simple and stupid
+-	SAP: service access point
