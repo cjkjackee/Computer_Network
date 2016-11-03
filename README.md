@@ -90,6 +90,7 @@ analog的傳輸方式
 	*	802.2 LLC
 	*	不同的physical和mac layer 有不同的號碼（802.X）但LLC只有802.
 		2,之後會講爲什麼
+	+	LLC 在 MAC的上面
 -	Ingredient of a LAN
 	*	Topology ： 連接網絡的方法
 	*	Transmission medium
@@ -115,7 +116,7 @@ LAN topology
 -	star
 	*	邏輯上與bus相似
 	+	hub 和 repeater 的差異：repeater只有雙向，hub有multiport
-	+	hub第一層，router第三層
+	+	repeater,hub第一層，router第三層
 	+	header hub （HHUB）
 
 以上是最常用的4種
