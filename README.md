@@ -201,9 +201,25 @@ precursors of CSMA/CD
 		就重傳
 	+	不一定同時傳輸才會碰撞，只有重疊到就會碰撞
 -	Slotted ALOHA
-	+	同時pure ALOHA 的方式，但增加TDM，每個time slot開始的時候才
+	+	同是pure ALOHA 的方式，但增加TDM，每個time slot開始的時候才
 		能傳，所以碰撞的時候只有兩個同時傳的時候。
 
+CSMA(carrier sense multiple access)
+-	carrier sense：每次要傳的時候都去check傳輸媒介
+-	類似講話的時候先聽一下有沒有人講話，沒有人在講話才講話
+-	還是會碰撞，碰撞情況：
+	+	兩邊聽的時候發現沒有人傳，兩邊同時傳
+	+	一個先傳，但是因爲delay，另一邊聽的時候以爲沒有人傳，然後傳
+-	又分三類：
+	1.	non-persistent
+	2.	1-persistent
+	3.	p-persistent //p代表幾率
+-	non-persistent
+	+	類似家裏有多臺電話，當拿起一只發現有人在講話，就掛掉，等過一整子再聽
+	+	當放下的那一瞬間，另一方傳完了，還是會等一段時間才聽  
+		好處：碰撞率會降低  
+		壞處：浪費時間
+		
 # 作業
 
 +	ack 
