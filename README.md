@@ -1,6 +1,13 @@
 # Computer_Network
 -	[OSI](https://github.com/cjkjackee/Computer_Network#osi) 
--	[Five Layer](#five-layer)
+-	[Five Layer](https://github.com/cjkjackee/Computer_Network#five-layer)
+-	[信號](https://github.com/cjkjackee/Computer_Network#信號)
+-	[Multiplexing](https://github.com/cjkjackee/Computer_Network#multiplexing)
+-	[Spread Spectrum](https://github.com/cjkjackee/Computer_Network#multiplexing)
+-	[transmission media](https://github.com/cjkjackee/Computer_Network#transmission-media)
+-	[LAN](https://github.com/cjkjackee/Computer_Network#lan)
+-	[ethernet LAN](https://github.com/cjkjackee/Computer_Network#ethernet-lan)
+-	[supplementary：security](https://github.com/cjkjackee/Computer_Network#supplementarysecurity)
 
 # OSI
 1.	physical Layer
