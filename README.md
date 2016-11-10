@@ -1,4 +1,5 @@
 # Computer_Network
+-	[OSI] [OSI] 'OSI'
 
 # OSI
 1.	physical Layer
@@ -56,7 +57,7 @@ analog的傳輸方式
 	*	只要background noise 不太大，掩蓋原本的，基本上不會有影響
 
 #Spread Spectrum
-+	讓攔截通訊（interception）和破壞通訊（jamming）變得困難
++	讓攔截通訊（interception）和幹擾，破壞通訊（jamming）變得困難
 +	Frequency-Hopping
 	*	不同的時間點收不同的frequency
 	*	有同樣的hopping pattern 就收得到資料
@@ -214,12 +215,63 @@ CSMA(carrier sense multiple access)
 	1.	non-persistent
 	2.	1-persistent
 	3.	p-persistent //p代表幾率
+	4.	相同點：碰撞的時候，back off
 -	non-persistent
 	+	類似家裏有多臺電話，當拿起一只發現有人在講話，就掛掉，等過一整子再聽
 	+	當放下的那一瞬間，另一方傳完了，還是會等一段時間才聽  
-		好處：碰撞率會降低  
+		好處：碰撞率會降低，因爲聽到有人傳會過一下再聽，這段空檔內有人剛好拿起來聽到沒人傳，他就傳，前一個人回來聽又聽到有人傳又再等。  
 		壞處：浪費時間
-		
+-	1-persistent
+	+	聽到沒有人傳，一定會傳
+	+	優點：資源使用率高
+	+	缺點：因爲是一直等到別人不傳馬上傳，只要有兩人以上同時在聽，就會碰撞，碰撞率高。
+-	p-persistent
+	+	聽到沒有人傳，p的幾率會傳，1-p的幾率不傳
+	+	優點：與1-persistent相同，可以避開1-persistent的碰撞
+	+	缺點：碰撞率高。
+-	performance
+	+	當np>1，就可能會碰撞，n：機械數量，p：傳輸幾率
+	+	碰撞後就會再和新的要傳輸的人碰撞
+	+	throughput will drop to zero
+	+	所以，np最好小於1
+	+	所以p要set很小，傳輸等待的時間會要更久
+
+CSMA/CD （CD：Collision Detection）
+-	當你發現已經碰撞了，就不要傳了
+-	會花多久會detect collision
+	+	最壞的情況下，2×propagation delay
+-	persistence
+	+	IEEE 802.3 uses 1-persistent
+	+	collision detection和線的長度有關
+	+	Binary exponential backoff：  
+		如果傳輸失敗，等2^n的時間單位再傳，在傳了嘗試了16次之後放棄
+	+	新傳的人成功率高於失敗重傳的人
+
+carrier sense && collision detection
+-	higher voltage swings == jamming signal
+-	IEEE802.3 最長的cable 只能500m
+	+	signal會衰減
+	+	collision detection和max（propagation deley）有關，而max（propagation deley）和cable的長度有關。
+
+# 10-Mbps Ethernet
+-	自己看
+
+# collision domain
+-	用hub||repeater鏈接collision 會互相影響，爲了分開他們，把hub||repeater換成第2層以上的就可以把他們分開。
+
+# supplementary：security
+encryption
+-	沒有加密的文件：plaintext，cleartext
+-	加密後的文件：ciphertext
+
+two categories
+-	secret-key algorithm
+	+	加密和解密用同一把鑰匙
+	+	如：你家大門
+-	public-key algotithm
+	+	加密和解密用不同的鑰匙
+	+	如：交大宿舍的房門
+
 # 作業
 
 +	ack 
@@ -232,3 +284,4 @@ CSMA(carrier sense multiple access)
 -	throughput：傳多少進去，傳多少出來
 -	KISS：keep it simple and stupid
 -	SAP: service access point
+-	repeater 和 hub 把兩個10公尺接起來==自己拉一條20公尺的線
