@@ -1,5 +1,5 @@
 # Computer_Network
--	[OSI] [OSI] 'OSI'
+-	[OSI](https://github.com/cjkjackee/Computer_Network#osi) 
 
 # OSI
 1.	physical Layer
