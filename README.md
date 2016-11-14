@@ -280,6 +280,36 @@ two categories
 	+	加密和解密用不同的鑰匙
 	+	如：交大宿舍的房門
 
+### secret key
+substitution ciphering
+-	把一個字換成另一個字
+-	caesar cipher：shift alphabet
+
+DES （data encryption standard）
+
+AES：Advance encryption standard
+
+### public key
+PGP：pretty good privacy（可下載軟體）
+有public key 和 secret key
+-	public key ： 加密
+-	secret key ： 解密
+
+RSA
+-	用兩個很大的質數相乘，得到public key
+
+MAC：message authentication code
+-	資料借由secret key 和 mac 演算法進行演算，的到mac，附加在原本資料，在另一端的到了附加mac的資料後在以相同的secret key 以mac演算法進行演算，如果算出來的mac與原本的mac一樣則無問題，否則data有問題
+-	檢查資料有沒有被串改：data integrity
+-	電話公司在用，爲了判斷身份
+-	常用的演算法：hash function
+
+hash function
+-	unkeyed hash
+	-	message digest 5 （MD5）： linux傳帳密是用這個，已被破解
+
+# wireless LANs
+
 # 作業
 
 +	ack 
