@@ -1,5 +1,5 @@
 # Computer_Network
--	[OSI](https://github.com/cjkjackee/Computer_Network#osi) 
+-	[OSI](https://github.com/cjkjackee/Computer_Network#osi)
 -	[Five Layer](https://github.com/cjkjackee/Computer_Network#five-layer)
 -	[信號](https://github.com/cjkjackee/Computer_Network#信號)
 -	[Multiplexing](https://github.com/cjkjackee/Computer_Network#multiplexing)
@@ -79,7 +79,7 @@ analog的傳輸方式
 	*	twisted pair - 雙絞線
 	*	coaxial cable - 銅軸電纜
 	*	optical fiber - 光纖
-	
+
 +	unguided media
 	*	infrared(IR) - 紅外線:  
 		會被亮色的物體反射  
@@ -90,8 +90,8 @@ analog的傳輸方式
 		ISM（industrial，scientific，and medical） bands  
 		美國制定的任何人在美國都可以用的頻段  
 		915MHz  
-		2.4MHz  
-		5.8MHz
+		2.4GHz  
+		5.8GHz
 
 # LAN
 -	organization of IEEE 802
@@ -107,7 +107,7 @@ analog的傳輸方式
 		不同的mac
 
 LAN topology
--	bus: 
+-	bus:
 	*	share medium
 	*	一個人在傳所有人都知道
 	*	問題：會有collision,所以需要有MAC
@@ -180,7 +180,7 @@ Generic MAC Frame
 -	LLC PDU —— payload
 -	CRC —— trailer
 
-bridge 
+bridge
 -	跑到第二層
 -	不會改變資料
 -	與router的不同點
@@ -200,7 +200,7 @@ networking device
 
 # ethernet LAN
 802.3
--	define 
+-	define
 	+	physical layer
 	+	MAC layer：CSMA/CD —— contention的方式
 
@@ -309,10 +309,91 @@ hash function
 	-	message digest 5 （MD5）： linux傳帳密是用這個，已被破解
 
 # wireless LANs
+-	802.11
+	-	在1997年制定出來，但wireless的設備之前就有了
+	-	只定義到第二層
+-	802.11i
+	-	安全
+-	802.11e
+	-	QoS （quality of service）
+	-	802.11 跟 802.3一樣，不能確定越早出去的越早到，802.11e是爲了改善這件事
+-	BSS：basic service set
+	-	subset
+-	ESS：extended service set
+	-	最大的那一圈
+-	STA：station
+
+infrastructure
+-	AP（access point）是一個bridge
+-	傳資料一定要通過AP
+-	離AP越近傳輸率越快，反之亦反
+-	會有一個distribution System
+	-	把多數的BSS連在一起形成ESS
+
+Ad Hoc
+-	又稱independent mode
+-	direct communication ： STA直接對連
+-	資料可以互傳
+-	如果信號不夠強，可以通過其他人幫忙傳（dynamic routing）
+
+802.11 protocol entities
+-	station management
+	-	聯系MAC和phy layer
+-	MAC layer management
+ 	-	synchronization
+	-	power management
+	-	roaming：從AP1到AP2轉換
+	-	MIB（management information base）：遠端管理設備用的資料
+-	PLCP （phy layer 上層sublayer）
+	-	SAP
+	-	function for carrier sense：看設備有沒有在傳資料
+- PMD （phy 下層sublayer）
+	-	modulation and encoding ： 把信號轉成資料
+-	MAC entity
+	-	basic access
+	-	fragmentation ： 把資料切成小塊
+	-	encryption
+
+802.11 service
+-	association：連上網絡
+-	reassociation：離開後重新臉上網絡/ 從一個BSS換到另一個BSS
+-	disassociation：離開網絡
+-	authentication：認證
+	-	shared key：只要有密碼就可以用
+	-	proprietary authentication extensions：自定義的認證方式，如：網頁認證
+-	privacy
+	-	一開始定義的加密方法WEP（wired equibalent privacy）
+	-	station to station 的加密：所以如果資料經過AP，加密的就只有station到AP和AP到station那一段
+	-	只有payload有加密
+
+802.11 Protocol Architecture
+-	有兩個MAC
+-	PCF
+	-	protocol：polling
+-	DCF
+	-	protocol：CSMA/CA
+
+MAC
+-	一個mac可以support多個physical layer
+-	DCF（distributed coordination function）
+	-	contention algorithm
+-	PCF（point coordination function）
+	- optional
+
+Inter Frame Space（IFS）
+-	SISF（short inter frame space）
+	-	transmitor 和 receiver 同一時間只有一個在工作
+	-	要傳的時候transmitor要打開，打開需要時間
+	-	硬體運作需要的時間
+-	PISF（PCF IFS）
+	-	polling需要用的時候需要的時間
+	-	SIFS + setup time
+-	DIFS（DCF IFS）
+	-	SIFS + 兩個setup time
 
 # 作業
 
-+	ack 
++	ack
 	*	1端送data給2端，2端如果收到了回傳一個東西給1端，讓1端知道2端已經收到了
 
 # 注
@@ -323,3 +404,4 @@ hash function
 -	KISS：keep it simple and stupid
 -	SAP: service access point
 -	repeater 和 hub 把兩個10公尺接起來==自己拉一條20公尺的線
+- fragmentation： 切成小塊
