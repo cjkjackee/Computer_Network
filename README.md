@@ -391,6 +391,30 @@ Inter Frame Space（IFS）
 -	DIFS（DCF IFS）
 	-	SIFS + 兩個setup time
 
+DCF
+-	collision detection (CD) 不容易做
+	-	因爲要邊聽邊傳
+-	collision avoidance （CA）代替
+	-	預防有collision發生
+	-	聽到IDLE不傳，繼續聽到DIFS，DIFS沒有人傳才傳
+	-	防止前面已經有人傳了，造成的碰撞
+	-	還是有可能碰撞：兩個機器同時聽到IDLE，同時在等DIFS，同時傳
+	-	聽到medium是busy，聽到DIFS也不穿，繼續等contention window（0～7個time slot隨便選），如果還是沒有人傳就傳，有人傳就停下來，等medium IDLE 了繼續聽完剩下的contention window
+	-	可能碰撞幾率：剩下的contention window都相同
+	-	大部分時間都在聽：因爲receive比較省電，transmit比較耗電，一直在receive好過一直collision，一直transmit
+
+CSMA/CA + ACK protocol
+-	receiver 在受到資料後，CRC（error detection）是對的，就回傳ack
+
+無線網絡在傳有三種模式
+-	Tx
+	-	transmit
+	-	最耗電
+-	Rx
+	-	receive
+-	sleep
+	-	最省電
+
 # 作業
 
 +	ack
