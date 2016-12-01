@@ -391,7 +391,7 @@ Inter Frame Space（IFS）
 -	DIFS（DCF IFS）
 	-	SIFS + 兩個setup time
 
-DCF
+### DCF
 -	collision detection (CD) 不容易做
 	-	因爲要邊聽邊傳
 -	collision avoidance （CA）代替
@@ -399,14 +399,57 @@ DCF
 	-	聽到IDLE不傳，繼續聽到DIFS，DIFS沒有人傳才傳
 	-	防止前面已經有人傳了，造成的碰撞
 	-	還是有可能碰撞：兩個機器同時聽到IDLE，同時在等DIFS，同時傳
-	-	聽到medium是busy，聽到DIFS也不穿，繼續等contention window（0～7個time slot隨便選），如果還是沒有人傳就傳，有人傳就停下來，等medium IDLE 了繼續聽完剩下的contention window
+	-	聽到medium是busy，聽到DIFS也不穿，繼續等contention window（0～7個time slot隨便選），如果還是沒有人傳就傳，有人傳就停下來，等medium IDLE 了繼續聽完剩下的contention window，如果聽完剩下的contention window還是沒有傳出去，在從0～15選一過再聽，再不行，重復，知道號碼0～255試了16次，就不傳。
+	- 因爲0～7歲隨便選，選到相同的幾率很小，減少collision
+	-	傳成功的人要等一個contention window，防止傳成功的人，一直傳下去
 	-	可能碰撞幾率：剩下的contention window都相同
 	-	大部分時間都在聽：因爲receive比較省電，transmit比較耗電，一直在receive好過一直collision，一直transmit
+	-	PHY layer 有CCA（clear channel assessment）會做carrier sence
 
-CSMA/CA + ACK protocol
--	receiver 在受到資料後，CRC（error detection）是對的，就回傳ack
+#### CSMA/CA + ACK protocol
+-	只用於unicast（一對一傳輸）
+-	receiver 在受到資料後，CRC（作用：error detection）是對的，就回傳ack
+-	沒有收到就從傳
+- destination 收到的時候要等SIFS的時間才ack
+	-	確定資料沒有錯
+	-	要從receive換成transmit需要時間，而需要的時間正好是SIFS
+-	ACK一定會傳成功
+	-	要回傳ack代表當時只有source一個人在傳
+	-	雖然要等SIFS但是SIFS比所有人要等的時間都短，所以一定是會回傳。
 
-無線網絡在傳有三種模式
+#### hidden terminal
+-	一臺存在的機器，但是另外一臺機器不知道它的存在。
+-	CSMA/CA會有問題
+	-	A，B，C三臺機器，A,C互相不知道對方的存在（訊號互相覆蓋不到對方，詳細圖看講義），A，和C,都想要傳資料給B，假設A先傳，C因爲不知道A的存在，等完DIFS後就傳給B，如果A和B還沒傳完，就會collision
+
+#### virtual sensing
+-	爲了解決hidden terminal的問題
+-	同上面的假設，A在傳的時候會發出RTS（request-to-send），告訴範圍內的人要傳資料，要傳多久，B如果有收就會發出CTS（clear-to-send），告訴範圍內的人它要收資料，要收多久，C收到CTS就知道B在接收資料
+-	NAV （net ）
+-	流程（詳細看講義）
+	1.	source要傳資料，先聽，聽到是IDLE，等DIFS，然後傳RTS
+	2.	destination收到RTS，傳出CTS
+	3.	source收到CTS，傳出資料
+	4.	destination收到資料，傳出ACK
+-	NAV（RTS）就是2-4的時間，這段時間內不能傳
+
+### PCF
+superframe
+-	有兩個部分：
+	-	contention-free period
+	-	contention period
+-	就是有兩個不同的時間有兩個不同的傳輸方式，例：20分鍾polling，80分鍾CSMA/CA
+-	假設過了一百分鍾還沒傳完，如剩下20分鍾，讓它傳完，PCF時間不縮短，縮短DCF的時間
+-	兩臺機器一臺用PCF，一臺用DCF，用PCF的會搶贏
+
+### Scanning
+-	passive scanning
+	-	AP會發出beacon（AP發出來的image，告訴設備它的存在）
+-	active scanning
+	-	設備主動發出訊號，等probe response（AP的回復）
+
+
+無線網絡有三種模式
 -	Tx
 	-	transmit
 	-	最耗電
@@ -429,3 +472,6 @@ CSMA/CA + ACK protocol
 -	SAP: service access point
 -	repeater 和 hub 把兩個10公尺接起來==自己拉一條20公尺的線
 - fragmentation： 切成小塊
+-	unicast： 一對一傳
+-	broadcast：一對多傳輸（傳給所有人）
+-	multicast：一對多傳輸（傳個特定多數人）
