@@ -448,7 +448,6 @@ superframe
 -	active scanning
 	-	設備主動發出訊號，等probe response（AP的回復）
 
-
 無線網絡有三種模式
 -	Tx
 	-	transmit
@@ -457,6 +456,34 @@ superframe
 	-	receive
 -	sleep
 	-	最省電
+
+### roaming approach
+-	SNR(signal noise ratial) = S/N
+-	SNR低於40%的時候尋找可以用的另一個AP
+	-	低於40%就找的原因：可能會有找不到的風險
+-	另一個AP的SNR高於50%的時候就連上
+	-	不馬上換的原因：可能下一個時間點另一個AP的SNR不一定會上升
+	-	乒乓效應：馬上換可能會一直交換AP
+
+### power management
+-	能進sleep就盡量sleep
+-	過了一段時間聽一下，看有沒有東西要收
+-	如果在sleep mode，有人送東西給你，AP會收起來
+-	在起來聽的時候AP會告訴你有人要傳東西。
+-	TIM（traffic indication map）：一個map用來表示有人有資料要送給station
+
+### 802.11b
+-	傳輸率最高爲11Mbps
+	-	離AP太遠可能會講到1Mbps
+
+### 802.11a
+-	2.4GHz的幹擾太嚴重
+-	用5.8GHz
+
+### 802.11n
+-	improving 802.11a && 802.11g
+	-	54Mbps～600Mbps
+-	增加了 multiple-input multiple-output （MIMO）
 
 # 作業
 
