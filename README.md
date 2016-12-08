@@ -484,6 +484,62 @@ superframe
 -	improving 802.11a && 802.11g
 	-	54Mbps～600Mbps
 -	增加了 multiple-input multiple-output （MIMO）
+	-	多根天線
+	-	最好相隔45度，效能最好
+
+### 802.11e
+-	改善MAC quality of service（QoS）
+-	利用SIFS和contention window的特點就可提高一個人的成功率
+	-	SIFS 短，成功率高
+	-	contention window 越長成功率越低
+- enhanced distributed channel access（EDCA）
+	-	改善DCF
+	-	增加了AIFS，有四個等級，最短的AIFS==DIFS
+	-	contention window size relies on QoS parameter
+	-	可以傳成功後不用等contention window繼續傳，但有限制次數，次數defined by transmission opportunity（TXOP）
+
+### Wi-Fi（Wireless Fidelity）Certification
+-	Wi-Fi，不是一種網絡，是一種certification
+	-	是802.11網絡的認證
+
+# IP
+-	IP：internet protocol
+	-	第三層的運作方式
+-	ip功能：
+	-	addressing
+	-	route packets
+	-	fragmentation
+
+### IP address
+-	ip address 代表host的 ID 和 location
+-	要代表location的理由：routing比較容易，之要找netid（前幾個bit）
+	-	router不用存全世界的IP來對
+
+### format of IPv4 Address
+-	有class A~E
+-	class A：第一個bit是0，有2^24個hostid
+-	class B：前兩個bit是10，最多有2^16個hostid
+-	class C：前三個bit是110,最多有2^8個hostid
+-	class D：前四個bit是1110
+-	class E：前四個bit是1111
+-	subnetting
+	-	爲了區分，在hostid裏切一段，成爲subnettid
+	-	subnet mask：決定subnet要切在那裏，前面都是1,0的地方是hostid
+	-	如：255.255.255.0 前面16個bit是netid（class B的netid有16bit），8個bit是subnetid，8個bit是hostid
+
+### supernetting
+-	多筆address都送到同一個地方
+	-	（192.168.48.0,3）代表192.168.48.0,192.168.49.0,192.168.50.0 都是送到同一個地方
+	-	概念上是這樣，實做不同
+-	實際上：
+	-	10/8 == 10.0.0.0/8（前8bit不變，後面的都可變），代表10.0.0.0～10.255.255.255都是同樣的地方
+
+### address authority
+-	分配IP address 的組織
+-	IANA:Internet Assigned Number Authority
+	-	1998年後就不再運作了，因爲負責人死了
+-	ICANN：Internet Corporation for Assigned Names and Numbers
+-	TWNIC：Taiwan Network Information Center
 
 # 作業
 
@@ -502,3 +558,4 @@ superframe
 -	unicast： 一對一傳
 -	broadcast：一對多傳輸（傳給所有人）
 -	multicast：一對多傳輸（傳個特定多數人）
+-	wireless ethernet compatibility alliance（WECA）：Wi-Fi 認證機構
