@@ -514,9 +514,12 @@ superframe
 -	ip address 代表host的 ID 和 location
 -	要代表location的理由：routing比較容易，之要找netid（前幾個bit）
 	-	router不用存全世界的IP來對
+- IP只有在特定的subnet才能用
 
 ### format of IPv4 Address
 -	有class A~E
+-	分class理由：
+	-	每個人要連上網絡的機器都不一樣
 -	class A：第一個bit是0，有2^24個hostid
 -	class B：前兩個bit是10，最多有2^16個hostid
 -	class C：前三個bit是110,最多有2^8個hostid
@@ -524,15 +527,23 @@ superframe
 -	class E：前四個bit是1111
 -	subnetting
 	-	爲了區分，在hostid裏切一段，成爲subnettid
+	-	好處：router不用存完所有的hostid，可依據subnetid先送往subnetid所在的地方，再送給hostid，如地址，如果沒有分區，郵差要記完所有的地方，有分區，就可先送到各區，再送
 	-	subnet mask：決定subnet要切在那裏，前面都是1,0的地方是hostid
 	-	如：255.255.255.0 前面16個bit是netid（class B的netid有16bit），8個bit是subnetid，8個bit是hostid
+	-	考試不一定要換10進位
 
 ### supernetting
 -	多筆address都送到同一個地方
 	-	（192.168.48.0,3）代表192.168.48.0,192.168.49.0,192.168.50.0 都是送到同一個地方
+	- 分散就不行了
 	-	概念上是這樣，實做不同
 -	實際上：
-	-	10/8 == 10.0.0.0/8（前8bit不變，後面的都可變），代表10.0.0.0～10.255.255.255都是同樣的地方
+	-	10/8 == 10.0.0.0/8（前8bit不變，後面的都可變）,代表有2^（32-8）個IP address，代表10.0.0.0～10.255.255.255都是同樣的地方
+	-	128.211.168.0/21, "/21"是slash notation1
+-	supernetting == classless addressing
+
+### IPv4 header
+-	
 
 ### address authority
 -	分配IP address 的組織
