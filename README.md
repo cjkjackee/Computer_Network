@@ -542,7 +542,27 @@ superframe
 	-	128.211.168.0/21, "/21"是slash notation1
 -	supernetting == classless addressing
 
-### IPv4 header
+### IPv4 header （圖看講義）
+-	payload 不固定所以要有total length
+-	time to live ： packet 可能一直routing，沒有傳出去，當過來一定時間就丟掉，不是真的算packet的live time，而是規定packet被router處理過多少次
+	-	真正的單位：hop count
+- protocol：這個packet用的protocol，udp還是tcp
+-	header checksum：資料是否修改，出錯，的出錯機制的訊息
+-	identifier：有100個ip的packet是同一個的，identifier就是去儲存他們是否是同一個ip的packet
+-	flags：有100個packet，不能確定他們是誰會先到，所以flag就儲存他們的順序，位置，
+	-	flag==1,最後一個packet
+-	fragment offset： packet的位置信息（同上）
+-	option && padding：
+	-	一定要4byte的倍數
+	-	padding的功能：options不一定是4的倍數，padding就是塞一些無用信息給進去，或者是沒有option，隨便亂塞東西，讓攔截的人不知道是什麼
+
+### IP routing
+1.	先查routing table 找到符合的IP address
+2.	查routing table，找到符合的net id
+3.	都查不到，送default
+
+在routing的時候如果header的destination address和routing table不符合，header會不會改？
+-	不會
 -	
 
 ### address authority
