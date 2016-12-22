@@ -562,8 +562,55 @@ superframe
 3.	都查不到，送default
 
 在routing的時候如果header的destination address和routing table不符合，header會不會改？
--	不會
--	
+-	不會，source ip address 和 destination ip address 都不會變
+-	利用外面第二層layer的MAC header，這層的source MAC address就是這段期間內送資料的人，destination MAC address這段時間內要收資料的人。
+-	送的方法
+	-	host 送出來會問大家要送給誰
+	-	router收到就回host，讓host送給router
+	-	所以就可以知道destination MAC address
+
+### address resolution protocol (ARP)
+-	associate ip address with MAC address
+	-	把ip和mac address 對應起來
+-	不知道destination就問，怎麼問？
+	- broadcast ARP REQUEST
+	-	有這個IP address的node就回傳 ARP REPLY
+-	ARP cache：
+	-	如果要傳100個packet，host問了一次，要收的人就reply，host不用問100次，記在ARP cache 要傳給誰就好
+	-	記20分鍾
+-	gratuitous ARP
+	-	trigger other node to update their ARP caches：node有要變動就跟host講，讓host update
+-	proxy ARP
+	-	代替要收的人回應，就像host要傳給destination可是是用router連接，router會代替destination回應host
+
+### addressing types
+-	unicast
+	-	一對一傳
+	-	address of a single interface
+	-	delivery to single interface
+-	Multicast
+	-	傳給特定多數人
+	-	address of a set of interface
+	-	delivery to all interface in the set
+-	broadcast
+	-	傳給所有人
+	-	只broadcast 到subnet的所有人，不是真的所有人
+	-	address of all interface
+	-	delivery to all interface on the Network
+	-	ip 最後是255的是用來做broadcast的
+broadcast 有分兩種：
+-	limited broadcast
+	-	傳給自己的subnet
+	-	又稱 local network broadcast address
+	- address：32個1
+-	direct broadcast
+	-	broadcast 到特定的 subnet
+	-	address：hostid都是1
+
+### zero in IP address
+-	當一開機沒有IP address 的時候就有0.0.0.0的IP address
+-	這個IP address 只會連到DHCP
+-	得到IP address後就不會是0.0.0.0了
 
 ### address authority
 -	分配IP address 的組織
@@ -571,6 +618,52 @@ superframe
 	-	1998年後就不再運作了，因爲負責人死了
 -	ICANN：Internet Corporation for Assigned Names and Numbers
 -	TWNIC：Taiwan Network Information Center
+
+# DHCP
+-	dynamic host configuration protocol
+
+### addressing issue
+-	要連上網就傲有IP
+-	static IP address
+	-	一直都是這個IP
+-	dynamic IP address
+	-	開機才有
+
+### why DHCP
+-	movable network
+	-	移動之後，IP不能用，要拿到另一個IP
+
+### BOOTP（BOOTstrap Protocol）
+-	讓沒有硬碟的電腦可以取得IP
+-	問題
+	-	不能動態去assign
+	-	這臺是什麼IP就是什麼IP
+
+###DHCP
+-	RFC 2131
+	-	RFC： IETF 的標準，request for comment
+-	application layer protocol
+	-	幫忙把第三曾的IP address寫進去
+-	a mechanism rather than a policy
+- messages 是從BOOTP messages 改過來
+-	省時間
+
+### IP address allocation
+-	automatic allocation
+	-	自動給IP
+-	dynamic allocation
+	-	只給你用一段時間
+-	manual allocation
+	-	網管手動打IP address 然後用DHCP server assign IP給client
+
+### terminology
+-	看講義圖
+-	lease
+	-	像籤約，可以用多久。
+	- 好處：不用了也不講，IP就被佔用着
+
+### DHCP Messages
+- 看講義，老師不細講
 
 # 作業
 
@@ -590,3 +683,4 @@ superframe
 -	broadcast：一對多傳輸（傳給所有人）
 -	multicast：一對多傳輸（傳個特定多數人）
 -	wireless ethernet compatibility alliance（WECA）：Wi-Fi 認證機構
+- RFC： IETF 的標準，request for comment
