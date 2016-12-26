@@ -659,11 +659,38 @@ broadcast 有分兩種：
 ### terminology
 -	看講義圖
 -	lease
-	-	像籤約，可以用多久。
+	-	像籤約，表示可以用多久。
+	-	如果時間到了可是還要繼續用就再跟server講要續約
 	- 好處：不用了也不講，IP就被佔用着
 
 ### DHCP Messages
 - 看講義，老師不細講
+
+### client-server interaction（情況一）
+-	運作方式
+1.	client broadcast DHCPDISCOVER 的message
+2.	有DHCP server回復,回傳DHCPOFFER的message
+	-	有多個server收到，就有多個回傳
+	-	client回收復數個
+3.	選一個，boardcast DHCPREQUEST出來給有offer的server知道
+	-	沒被選到的就不會做事了
+4.	收到DHCPREQUEST的server回傳DHCPACK 給予IP
+5.	當不用的時候，送DHCPRELEASE
+	-	graceful shutdown： 不用了主動講不用了
+	-	non-graceful shutdown：不用了也不講
+
+### client-server interaction (情況二)
+1.	broadcast DHCPREQUEST，試着跟上次用過的server拿IP
+2.	如果成功，server回傳DHCPACK
+-	這樣比較快
+
+### reacquisition and expiration
+-	T1： RENEWING state time
+	-	找原本的server跟他說要繼續用的state
+-	T2： REBINDING state time
+	-	如果在T1原本的server不理你就會等
+	-	如果等到T2就問任何server看有沒有人可以給
+-	T2 > T1
 
 # 作業
 
@@ -684,3 +711,5 @@ broadcast 有分兩種：
 -	multicast：一對多傳輸（傳個特定多數人）
 -	wireless ethernet compatibility alliance（WECA）：Wi-Fi 認證機構
 - RFC： IETF 的標準，request for comment
+-	graceful shutdown： 不用了主動講不用了
+-	non-graceful shutdown：不用了也不講
