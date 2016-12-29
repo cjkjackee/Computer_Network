@@ -688,12 +688,30 @@ broadcast 有分兩種：
 -	T1： RENEWING state time
 	-	找原本的server跟他說要繼續用的state
 -	T2： REBINDING state time
-	-	如果在T1原本的server不理你就會等
+	-	如果在T1原本的server不理你
 	-	如果等到T2就問任何server看有沒有人可以給
 -	T2 > T1
+	-	T2<T1 沒有意義
+
+### State Transition
+-	看講義圖
+
+### header format
+-	不講
+
+### IPV6
+-	不講
+
+# NAT （Network address translation）
+-	有固定ip address 讓多個人共用
+-	NAT 通過什麼port傳出去，Ack就的destination port就是那個port
+-	最常用的NAT
+	-	NAPT
+	-	靠port去區分各機器
+	-	缺點：要先連出去，外面才可以連進來，要先連出去NAT才有辦法建表
+-	用NAT的好處：安全性，可以一直轉，別人就很難追
 
 # 作業
-
 +	ack
 	*	1端送data給2端，2端如果收到了回傳一個東西給1端，讓1端知道2端已經收到了
 
@@ -713,3 +731,4 @@ broadcast 有分兩種：
 - RFC： IETF 的標準，request for comment
 -	graceful shutdown： 不用了主動講不用了
 -	non-graceful shutdown：不用了也不講
+-	DHCPNAK ： 拒絕
