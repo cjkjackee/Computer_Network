@@ -8,6 +8,10 @@
 -	[LAN](https://github.com/cjkjackee/Computer_Network#lan)
 -	[ethernet LAN](https://github.com/cjkjackee/Computer_Network#ethernet-lan)
 -	[supplementary：security](https://github.com/cjkjackee/Computer_Network#supplementarysecurity)
+-	[wireless LANs](https://github.com/cjkjackee/Computer_Network#wireless-lans)
+-	[IP](https://github.com/cjkjackee/Computer_Network#ip)
+-	[DHCP](https://github.com/cjkjackee/Computer_Network#dhcp)
+-	[NAT](https://github.com/cjkjackee/Computer_Network#nat-network-address-translation)
 
 # OSI
 1.	physical Layer
